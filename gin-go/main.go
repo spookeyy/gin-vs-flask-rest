@@ -113,7 +113,6 @@ func addUser(c *gin.Context) {
 
 
 
-
 // middleware
 func AuthMiddleware(c *gin.Context) {
 	if c.Request.URL.Path != "/" && c.GetHeader("Authorization") == "" {
@@ -130,8 +129,6 @@ func LogMiddleware(c *gin.Context) {
 	log.Printf("Response: %d", c.Writer.Status())
 }
 
-
-// var users []map[string] string // slice of maps
 
 // check if user exists in the database
 func userExists(user map[string]string) bool {
@@ -161,29 +158,8 @@ func main(){
 		c.JSON(200, gin.H{"message": "Server is running", "status": "success", "status_code": 200})
 	})
 
-	// router.GET("/users", func(c *gin.Context) {
-	// 	c.JSON(200, gin.H{"users": users, "message": "Users retrieved successfully", "status": "success", "status_code": 200})
-	// })
-
 	router.GET("/users", getUsers)
 	router.POST("/users", addUser)
-
-	// router.POST("/users", func(c *gin.Context) {
-	// 	var new_user map[string]string
-	// 	if err := c.BindJSON(&new_user); err != nil {
-	// 		c.JSON(400, gin.H{"message": "Invalid request", "status": "error", "status_code": 400})
-	// 		return
-	// 	}
-
-	// 	if userExists(new_user){
-	// 		c.JSON(409, gin.H{"message": "User already exists", "status": "error", "status_code": 409})
-	// 		return
-	// 	}
-
-	// 	users = append(users, new_user)
-	// 	c.JSON(201, gin.H{"user": new_user, "message": "User added successfully", "status": "success", "status_code": 201})
-		
-	// })
 
 	//setting port
 	router.Run(":3000")
