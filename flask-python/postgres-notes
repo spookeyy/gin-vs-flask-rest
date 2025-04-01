@@ -1,0 +1,25 @@
+My Vscode Postgres:
+
+host = localhost
+username = postgres
+password = spookie
+port = 5432
+db_name = postgres
+
+stopping
+sudo service postgresql@14-main stop
+
+disabling
+sudo systemctl disable postgresql@14-main
+
+set default
+sudo update-alternatives --config postgresql
+(Choose your preferred version, e.g., PostgreSQL 16.)
+
+Test connection:
+psql -U postgres -h localhost
+
+if password fails, set password from terminal:
+sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'your_new_password';"
+
+The go back to retry set up on vscode.
