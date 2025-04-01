@@ -164,29 +164,3 @@ func main(){
 	//setting port
 	router.Run(":3000")
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // route to get all users
-
-// func getUsers(c *gin.Context){
-// 	router := gin.Default()
-// 	router.GET("/users", func(c *gin.Context) {
-// 		c.JSON(200, gin.H{"message": "Users retrieved successfully", "status": "success", "status_code": 200})
-// 	})
-
-// 	router.Run()
-
-// }
